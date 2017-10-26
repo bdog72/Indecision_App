@@ -1,20 +1,9 @@
 import React, { Component } from 'react'
-import CountryGame from './CountryGame'
-import worldImg from './world.jpg'
-import '../styles/app.scss'
-class App extends Component {
+
+export default class App extends Component {
   render () {
     return (
-      <div className='flag-app'>
-        <header
-          className='title-header'
-          style={{ backgroundImage: `url(${worldImg})` }}>
-          <h1 className='title-text'>Guess The Flag</h1>
-        </header>
-        <CountryGame />
-      </div>
+      <h1>What up dog</h1>
     )
   }
 }
-
-export default App
