@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 export default class Action extends Component {
-  // handlePick () {
-  //   alert('handlePick')
-  // }
   render () {
     return (
       <div>

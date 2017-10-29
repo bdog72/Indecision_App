@@ -9,8 +9,9 @@ export default class App extends Component {
     super(props)
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
     this.handlePick = this.handlePick.bind(this)
+    this.handleAddOption = this.handleAddOption.bind(this)
     this.state = {
-      options: ['One thing', 'Two thing', 'Three thing']
+      options: []
     }
   }
 
@@ -28,6 +29,19 @@ export default class App extends Component {
     alert(option)
   }
 
+  handleAddOption (option) {
+    if (!option) {
+      return 'Enter valid value'
+    } else if (this.state.options.indexOf(option) > -1) {
+      return 'This option alreday exists'
+    }
+    this.setState((prevState) => {
+      return {
+        options: prevState.options.concat([option])
+      }
+    })
+  }
+
   render () {
     const title = 'Indecision App-App-D'
     const subtitle = 'Put your hands in the life of a computer'
@@ -42,8 +56,20 @@ export default class App extends Component {
           options={this.state.options}
           handleDeleteOptions={this.handleDeleteOptions}
         />
-        <AddOption />
+        <AddOption
+          handleAddOption={this.handleAddOption}
+        />
+        <User />
       </div>
     )
   }
+}
+
+const User = () => {
+  return (
+    <div>
+      <p>Name: </p>
+      <p>Age: </p>
+    </div>
+  )
 }
