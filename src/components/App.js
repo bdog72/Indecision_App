@@ -10,17 +10,20 @@ export default class App extends Component {
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
     this.handlePick = this.handlePick.bind(this)
     this.handleAddOption = this.handleAddOption.bind(this)
+    this.handleDeleteOption = this.handleDeleteOption.bind(this)
     this.state = {
-      options: []
+      options: props.options
     }
   }
 
   handleDeleteOptions () {
-    this.setState(() => {
-      return {
-        options: []
-      }
-    })
+    this.setState(() => ({ options: [] }))
+  }
+
+  handleDeleteOption (optionToRemove) {
+    this.setState((prevState) => ({
+      options: prevState.options.filter((option) => optionToRemove !== option)
+    }))
   }
 
   handlePick () {
@@ -35,19 +38,17 @@ export default class App extends Component {
     } else if (this.state.options.indexOf(option) > -1) {
       return 'This option alreday exists'
     }
-    this.setState((prevState) => {
-      return {
-        options: prevState.options.concat([option])
-      }
-    })
+    this.setState((prevState) => ({
+      options: prevState.options.concat([option])
+    }
+    ))
   }
 
   render () {
-    const title = 'Indecision App-App-D'
     const subtitle = 'Put your hands in the life of a computer'
     return (
       <div>
-        <Header title={title} subtitle={subtitle} />
+        <Header subtitle={subtitle} />
         <Action
           hasOptions={this.state.options.length > 0}
           handlePick={this.handlePick}
@@ -55,21 +56,16 @@ export default class App extends Component {
         <Options
           options={this.state.options}
           handleDeleteOptions={this.handleDeleteOptions}
+          handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption
           handleAddOption={this.handleAddOption}
         />
-        <User />
       </div>
     )
   }
 }
 
-const User = () => {
-  return (
-    <div>
-      <p>Name: </p>
-      <p>Age: </p>
-    </div>
-  )
+App.defaultProps = {
+  options: []
 }
