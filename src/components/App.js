@@ -13,7 +13,7 @@ export default class App extends Component {
     this.handleAddOption = this.handleAddOption.bind(this)
     this.handleDeleteOption = this.handleDeleteOption.bind(this)
     this.state = {
-      options: props.options
+      options: []
     }
   }
 
@@ -72,7 +72,7 @@ export default class App extends Component {
   render () {
     const subtitle = 'Put your hands in the life of a computer'
     return (
-      <div>
+      <div className='mainDiv'>
         <Header subtitle={subtitle} />
         <Action
           hasOptions={this.state.options.length > 0}
