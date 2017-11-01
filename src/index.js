@@ -9,6 +9,15 @@ import './styles/screen.scss'
 
 const root = document.getElementById('root')
 
+const Layout = () => {
+  return (
+    <div>
+      <p>header</p>
+      <p>footer</p>
+    </div>
+  )
+}
+
 const render = app => {
   ReactDOM.render(
     <AppContainer errorReporter={Redbox}>{app}</AppContainer>,
