@@ -1,4 +1,9 @@
 @import 'utility';
+@import './base/settings';
+@import './base/base';
+@import './components/header';
+@import './components/button';
+@import './components/widget';
 
 $base-text-size: 16px;
 $base-font-family: sans-serif;
@@ -10,8 +15,13 @@ html {
 body {
   margin: 0;
   font: $base-text-size / 1 $base-font-family;
+  background-color: #333745;
 }
 
-.mainDiv {
-  margin: 20px;
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
